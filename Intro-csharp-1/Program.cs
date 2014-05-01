@@ -4,11 +4,14 @@
     {
         static void Main()
         {
-            Console.WriteLine("Please enter your name:");
+            // Booleans can ONLY be EITHER true or false exclusively.
+            bool b = true;
 
-            string username = Console.ReadLine();
+            // byte, sbyte, short, ushort, int, uint, long, ulong
 
-            //Console.WriteLine("Hello " + username);   // Concatenation
-            Console.WriteLine("Hello {0}", username);   // Place holder syntax
+
+            int i = 0;
+            Console.WriteLine("Min of int = {0}", int.MinValue);
+            Console.WriteLine("Max of int = {0}", int.MaxValue);
         }
     }
