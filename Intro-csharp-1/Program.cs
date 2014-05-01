@@ -13,5 +13,12 @@
             int i = 0;
             Console.WriteLine("Min of int = {0}", int.MinValue);
             Console.WriteLine("Max of int = {0}", int.MaxValue);
+
+            // Double (64-bits)
+            double d = 123.456;
+            Console.WriteLine(d);
+
+            // Quad (128 bits)
+            decimal dec = 654.321m;
         }
     }
