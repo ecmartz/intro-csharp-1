@@ -4,52 +4,68 @@
     {
         static void Main()
         {
-            // Assignment operator
-            int i = 10;
-            bool b = true;
+            // 2 Board types in C#
+            /*
+             * Value types = int, float, double, structs, enum, etc.
+             * Reference types = Interface, Class, delegates, arrays, etc.
+             * 
+             * string is actually a Class
+             * 
+             * Value Types cannot hold null values, they are defaulted to "zero"
+             *     Nullable Value Types
+             *     Non-nullable Value Types
+             * 
+             * Reference Types default to NULL
+             * 
+             * Explicit conversion
+             *      .Value returns a non-nullable counterpart
+             *      Cast operator nullable to non-nullable
+             */
 
-            // Quotient and modulo operator
-            int numerator = 10;
-            int denominator = 2;
+            string name = null;
 
-            int result = numerator / denominator;
-            int result2 = numerator % denominator;
+            // Make a Value Type nullable
+            int? i = null;
 
-            Console.WriteLine("Quotient = {0}", result);
-            Console.WriteLine("Remainder = {0}", result2);
+            // Say you want an optional "Are you Major" field which evaluates to T/F, but the user doesn't give a response
+            bool? areyoumajor = null;
 
-         
-            int number = 10;
-            int anothernumber = 20;
-
-            // Comparison operator
-            if(number == 10)
+            if (areyoumajor == true)                     // If value exists, use areyoumajor.Value
             {
-                Console.WriteLine("number is 10");
+                Console.WriteLine("User is Major");
             }
-
-            // AND comparison operator
-            if(number == 10 && anothernumber == 20)
+            else if (areyoumajor == false)                 // If value exists, use !areyoumajor.Value
             {
-                Console.WriteLine("number is 10 AND anothernumber is 20");
-            }
-
-            // Program control flow
-            bool isnumber10;
-
-            if(number == 10)
-            {
-                isnumber10 = true;
+                Console.WriteLine("User is not Major");
             }
             else
             {
-                isnumber10 = false;
+                Console.WriteLine("User abstain");
             }
 
-            Console.WriteLine("number == 10 is {0}", isnumber10);
+            /* Converting from nullable to non-nullable */
+            int? ticketsonsale = 100;
 
-            // Ternary operator
-            bool isnum10 = number == 10 ? true : false;
-            Console.WriteLine("Ternary: number == 10 is {0}", isnum10);
+            int availabletickets;
+
+            if(ticketsonsale == null)
+            {
+                availabletickets = 0;
+            }
+            else
+            {
+                // availabletickets = ticketsonsale.Value;      Return non-nullable counterpart
+                availabletickets = (int)ticketsonsale;          // Cast operator usage
+            }
+
+            Console.WriteLine("AvailableTickets = {0}", availabletickets);
+
+            /* Null coalescing operator */
+            int? ticketsonsale2 = null;
+
+            int availabletickets2 = ticketsonsale2 ?? 0;
+
+            Console.WriteLine("After null coalescing: AvailableTickets2 = {0}", availabletickets2);
+
         }
     }
