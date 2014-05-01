@@ -4,68 +4,51 @@
     {
         static void Main()
         {
-            // 2 Board types in C#
-            /*
-             * Value types = int, float, double, structs, enum, etc.
-             * Reference types = Interface, Class, delegates, arrays, etc.
+            /* PART 7
+             * Datatype Conversion
              * 
-             * string is actually a Class
+             * Implicit/Explicit Conversions
+             * Parse(), TryParse()
+             * Use Parse() if you are sure the value will be valid
+             * Use TryParse() otherwise
              * 
-             * Value Types cannot hold null values, they are defaulted to "zero"
-             *     Nullable Value Types
-             *     Non-nullable Value Types
+             * Implicit conversions done by the compiler:
+             * 1. Implicit conversion is done by the compiler when no loss of information if conversion is done
+             * 2. No possibility of throwing exceptions during conversion
              * 
-             * Reference Types default to NULL
-             * 
-             * Explicit conversion
-             *      .Value returns a non-nullable counterpart
-             *      Cast operator nullable to non-nullable
+             * Error handling
+             * Type cast: Will convert the types willy-nilly
+             * Convert Class: Will throw an exception if conversion fails
              */
 
-            string name = null;
+            // Automagically!
+            //int i = 100;
+            //float f = i;
 
-            // Make a Value Type nullable
-            int? i = null;
+            float f = 123.45F;
 
-            // Say you want an optional "Are you Major" field which evaluates to T/F, but the user doesn't give a response
-            bool? areyoumajor = null;
+            int i = (int)f;                         // (int) type cast 
+            int j = Convert.ToInt32(f);             // .ToInt32 Convert class
 
-            if (areyoumajor == true)                     // If value exists, use areyoumajor.Value
-            {
-                Console.WriteLine("User is Major");
-            }
-            else if (areyoumajor == false)                 // If value exists, use !areyoumajor.Value
-            {
-                Console.WriteLine("User is not Major");
-            }
+            Console.WriteLine("Type cast: " + i);
+            Console.WriteLine("Convert class: {0}", j);
+
+
+            /* Using Parse() */
+            string strnumber = "100";
+            int k = int.Parse(strnumber);
+
+            Console.WriteLine("int.Parse = {0}", k);
+
+            /* Using TryParse() */
+            string strnum = "12345";
+            int result = 0;
+
+            bool isConversionSuccessful = int.TryParse(strnum, out result);
+
+            if (isConversionSuccessful)
+                Console.WriteLine(result);
             else
-            {
-                Console.WriteLine("User abstain");
-            }
-
-            /* Converting from nullable to non-nullable */
-            int? ticketsonsale = 100;
-
-            int availabletickets;
-
-            if(ticketsonsale == null)
-            {
-                availabletickets = 0;
-            }
-            else
-            {
-                // availabletickets = ticketsonsale.Value;      Return non-nullable counterpart
-                availabletickets = (int)ticketsonsale;          // Cast operator usage
-            }
-
-            Console.WriteLine("AvailableTickets = {0}", availabletickets);
-
-            /* Null coalescing operator */
-            int? ticketsonsale2 = null;
-
-            int availabletickets2 = ticketsonsale2 ?? 0;
-
-            Console.WriteLine("After null coalescing: AvailableTickets2 = {0}", availabletickets2);
-
+                Console.WriteLine("Please enter a valid number");
         }
     }
