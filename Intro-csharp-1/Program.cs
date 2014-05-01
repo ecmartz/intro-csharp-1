@@ -4,21 +4,16 @@
     {
         static void Main()
         {
-            // Booleans can ONLY be EITHER true or false exclusively.
-            bool b = true;
+            // Escape sequence
+            string sassyname = "\"Esteban\"";
+            Console.WriteLine(sassyname);
 
-            // byte, sbyte, short, ushort, int, uint, long, ulong
+            // Newline charcters
+            string newline = "one\ntwo\nthree";
+            Console.WriteLine(newline);
 
-
-            int i = 0;
-            Console.WriteLine("Min of int = {0}", int.MinValue);
-            Console.WriteLine("Max of int = {0}", int.MaxValue);
-
-            // Double (64-bits)
-            double d = 123.456;
-            Console.WriteLine(d);
-
-            // Quad (128 bits)
-            decimal dec = 654.321m;
+            // Verbatim Literal
+            string verbatim = @"C:\REPOS\Intro-csharp-1\";
+            Console.WriteLine(verbatim);
         }
     }
