@@ -5,42 +5,41 @@
         static void Main()
         {
             /*
-             * PART 10 If Statements
-             * 
-             * if(<condition>) { <execute> }
-             * else if(<condition>) { <execute> }
-             * else { <execute> }
-             * 
-             * OR:
-             * |    Compiler checks both conditions for true
-             * ||   Compiler only checks the first condition for true
-             * 
-             * AND:
-             * &    Compiler checks both conditions for false
-             * &&   Compiler only checks first condition for false
-             * 
-             * Doubles are sometimes referred to as "short circuit" operators
+             * PART 11: Switch statements
              * 
              */
 
             Console.WriteLine("Please enter a number");
             int usernum = int.Parse(Console.ReadLine());
 
-            if (usernum == 1)
+            switch(usernum)
             {
-                Console.WriteLine("Your number is 1.");
+                case 10:
+                    Console.WriteLine("Your number is 10.");
+                    break;
+                case 20:
+                    Console.WriteLine("Your number is 20.");
+                    break;
+                case 30:
+                    Console.WriteLine("Your number is 30.");
+                    break;
+                default:
+                    Console.WriteLine("Your number is not 10, 20, or 30.");
+                    break;
             }
-            else if (usernum == 2)
+
+            Console.WriteLine("Next part");
+
+            switch(usernum)
             {
-                Console.WriteLine("Your number is 2.");
-            }
-            else if (usernum == 3)
-            {
-                Console.WriteLine("Your number is 3.");
-            }
-            else
-            {
-                Console.WriteLine("Your number is not 1,2, or 3.");
+                case 10:
+                case 20:
+                case 30:
+                    Console.WriteLine("Your number is {0}", usernum);
+                    break;
+                default:
+                    Console.WriteLine("Your number is not 10, 20, or 30.");
+                    break;
             }
         }
     }
