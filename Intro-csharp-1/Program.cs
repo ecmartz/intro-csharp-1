@@ -5,41 +5,48 @@
         static void Main()
         {
             /*
-             * PART 11: Switch statements
+             * PART 12: Switch statements continued
              * 
              */
 
-            Console.WriteLine("Please enter a number");
-            int usernum = int.Parse(Console.ReadLine());
+            int totalcoffeecost = 0;
 
-            switch(usernum)
+            Start:
+            Console.WriteLine("1. Small\t2. Medium\t3. Large");
+            int userchoice = int.Parse(Console.ReadLine());
+
+            switch(userchoice)
             {
-                case 10:
-                    Console.WriteLine("Your number is 10.");
+                case 1:
+                    totalcoffeecost += 1;
                     break;
-                case 20:
-                    Console.WriteLine("Your number is 20.");
+                case 2:
+                    totalcoffeecost += 2;
                     break;
-                case 30:
-                    Console.WriteLine("Your number is 30.");
+                case 3:
+                    totalcoffeecost += 3;
                     break;
                 default:
-                    Console.WriteLine("Your number is not 10, 20, or 30.");
-                    break;
+                    Console.WriteLine("Your choice {0} is invalid.", userchoice);
+                    goto Start;
             }
 
-            Console.WriteLine("Next part");
+            Decide:
+            Console.WriteLine("Do you want to buy another coffee? Y or N");
+            string userpick = Console.ReadLine();
 
-            switch(usernum)
+            switch(userpick.ToUpper())
             {
-                case 10:
-                case 20:
-                case 30:
-                    Console.WriteLine("Your number is {0}", usernum);
+                case "Y":
+                    goto Start;
+                case "N":
                     break;
                 default:
-                    Console.WriteLine("Your number is not 10, 20, or 30.");
-                    break;
+                    Console.WriteLine("Your choice {0} is invalid. Try again", userpick);
+                    goto Decide;
             }
+
+            Console.WriteLine("Thank you for shopping with us");
+            Console.WriteLine("Bill amount = {0}", totalcoffeecost);
         }
     }
