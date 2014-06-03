@@ -5,23 +5,36 @@
         static void Main()
         {
             /*
-             * PART 13: while loop in C#
-             * http://youtu.be/5xlc9qzOQmk
+             * PART 14: do while loop in C#
+             * http://youtu.be/s7fVZZeNXec
              */
 
-            Console.WriteLine("Please enter your target");
+            // Do while always execute at least once!
 
-            int userTarget = int.Parse(Console.ReadLine());
-
-            int Start = 0;
-
-            while (Start <= userTarget)
+            string userChoice = string.Empty;
+            do
             {
-                // Newlines
-                Console.WriteLine(Start);
-                // Concat spaces
-                Console.Write(Start + " ");
-                Start = Start + 2;
-            }
+                Console.WriteLine("Enter your target");
+                int userTarget = int.Parse(Console.ReadLine());
+
+                int start = 0;
+
+                while (start <= userTarget)
+                {
+                    Console.Write(start + " ");
+                    start = start + 2;
+                }
+
+                do
+                {
+                    Console.WriteLine("Would you like to continue? (Y/N)");
+                    userChoice = Console.ReadLine().ToUpper();
+                    if (userChoice != "Y" && userChoice != "N")
+                    {
+                        Console.WriteLine("Invalid choice.");
+                    }
+
+                } while (userChoice != "Y" && userChoice != "N");
+            } while (userChoice == "Y");
         }
     }
