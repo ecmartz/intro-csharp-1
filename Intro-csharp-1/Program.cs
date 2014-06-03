@@ -2,39 +2,47 @@
 
     class Program
     {
-        static void Main()
+        public static void Main()       // Static method
         {
             /*
-             * PART 14: do while loop in C#
-             * http://youtu.be/s7fVZZeNXec
+             * PART 17: Methods
+             * http://youtu.be/c4hOXIG8yPo
              */
 
-            // Do while always execute at least once!
+            // Methods
+            // [attributes]
+            // access-modifiers return-type method-name ( parameters ) { method body }
 
-            string userChoice = string.Empty;
-            do
+            // To invoke an instance method, you have to invoke an instance of that class
+            // To invoke a static method, you have to invoke the class
+
+            Program p = new Program();
+            p.evenNumbers(50);                  // invoke instance method
+            Program.evenNums();                 // invoke static method
+
+            int sum = p.addIt(10, 20);
+            Console.WriteLine("Sum = {0}", sum);
+            
+        }
+
+        public int addIt(int fn, int sn)
+        {
+            return fn + sn;
+        }
+
+        public void evenNumbers(int target)       // Instance method
+        {
+            int start = 0;
+
+            while (start <= target)
             {
-                Console.WriteLine("Enter your target");
-                int userTarget = int.Parse(Console.ReadLine());
+                Console.WriteLine(start);
+                start = start + 2;
+            }
+        }
 
-                int start = 0;
+        public static void evenNums()              // Static method
+        {
 
-                while (start <= userTarget)
-                {
-                    Console.Write(start + " ");
-                    start = start + 2;
-                }
-
-                do
-                {
-                    Console.WriteLine("Would you like to continue? (Y/N)");
-                    userChoice = Console.ReadLine().ToUpper();
-                    if (userChoice != "Y" && userChoice != "N")
-                    {
-                        Console.WriteLine("Invalid choice.");
-                    }
-
-                } while (userChoice != "Y" && userChoice != "N");
-            } while (userChoice == "Y");
         }
     }
