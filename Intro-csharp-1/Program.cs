@@ -1,73 +1,69 @@
 ﻿using System;
+//using ProjectA.TeamA;         // 'using' directive
+//using ProjectA.TeamB;         
+//using PATA = ProjectA.TeamA;    // Namespace alias for Team A
+//using PATB = ProjectA.TeamB;    // Namespace alias for Team B
+using PATA = ProjectA_TeamA;
+using PATB = ProjectA_TeamB;
 
     class Program
     {
         public static void Main()
         {
             /*
-             * PART 17: Method parameters
-             * http://youtu.be/c4hOXIG8yPo
+             * PART 18: Namespaces
+             * http://youtu.be/IQTbvVemMAg
+             * 
+             * Namespaces help organize program and avoid clashes.
+             * Namespaces don't correspond to file, directory or assembly names, they
+             * could be written in separate files and/or separate assemblies and still
+             * belong to the same namespace.
+             * Namespaces can be nested with dot operators and curly brackets
+             * 
+             * Avoid ambiguity by using fully qualified names!
              */
 
-            /* Parameters (4 types)
-             * Value parameters         : Passes a copy
-             * Reference parameters     : with the 'ref' keyword, passes the reference
-             * Out parameters           : Return more than one value using 'out' keyword
-             * Parameter arrrays        : Lets you pass a variable amount of params using 'params' keyword
-             */
+            Console.WriteLine("Hello");
 
-            /* Arguments    : values that are passed in the invoking call
-             * Parameters  :  values that are passed in the method declaration
-             */
+            PATA.ClassA.print();
+            PATB.ClassA.print();
+            //ClassA.print(); // if you were using 'using'
+            //ProjectA.TeamB.ClassA.print();          // Using all namespaces
+            //ProjectA.TeamA.ClassA.print();
 
-            int i = 0;
-            int total, product;
-            int[] nums = new int[3];
+            //PATA.ClassA.print();                    // Using namespace aliases
+            //PATB.ClassA.print();
 
-            nums[0] = 101;
-            nums[1] = 102;
-            nums[2] = 103;
 
-            simpleMethod(i);                        // Pass by value
-            Console.WriteLine(i);
 
-            simpMethod(ref i);                      // Pass by references
-            Console.WriteLine(i);
-
-            calcUlate(10, 20, out total, out product); // Multiple outputs
-
-            paramsMethod(nums);                     // Parameter array
-
-            Console.WriteLine("Sum = {0} && Product = {1}", total, product);
-        }
-
-        /* Value parameter usage */
-        public static void simpleMethod(int j)      // Pass by value
-        {
-            j = 101;
-        }
-
-        /* Reference parameter usage */
-        public static void simpMethod(ref int j)    // Pass by reference
-        {
-            j = 101;
-        }
-
-        /* Out parameter usage */
-        public static void calcUlate(int fn, int sn, out int sum, out int product) // Returning multiple values
-        {
-            sum = fn + sn;
-            product = fn * sn;
-
-        }
-
-        /* Parameter array usage */
-        public static void paramsMethod(params int[] nums) // Essentially makes parameter arrays optional
-        {
-            Console.WriteLine("There are {0} elements.",nums.Length);
-            foreach (int i in nums)
-            {
-                Console.WriteLine(i);
-            }
+            
         }
     }
+
+//namespace ProjectA
+//{
+//    namespace TeamA
+//    {
+//        class ClassA
+//        {
+//            public static void print()
+//            {
+//                Console.WriteLine("Team A print method");
+//            }
+//        }
+//    }
+//}
+
+//namespace ProjectA
+//{
+//    namespace TeamB
+//    {
+//        class ClassA
+//        {
+//            public static void print()
+//            {
+//                Console.WriteLine("Team B print method");
+//            }
+//        }
+//    }
+//}
