@@ -1,49 +1,56 @@
 ﻿using System;
 
-class Customer
-{
-    string _firstname;
-    string _lastname;
-
-    public Customer() : this("No _firstname", "No _lastname") // this() refers to the 2 param class constructor
-    { }
-
-    public Customer(string firstName, string lastName)      // Class constructor
-    {
-        this._firstname = firstName;
-        this._lastname = lastName;
-    }
-
-    public void printFullName()
-    {
-        Console.WriteLine("Full name = {0}", _firstname + " " + _lastname);
-    }
-    
-    ~Customer()         // Class destructor, garbage collection
-    {
-        // Clean up code goes here
-    }
-}
-
     class Program
     {
         public static void Main()
         {
             /*
-             * PART 19: Intro to classes
-             * http://youtu.be/Us2i7D-urgs
+             * PART 20: Static and instance class members
+             * http://youtu.be/cFQLmHCguGs
+             * Static class members
+             * Instance class members
+             *  their differences
              * 
-             * Class constructors can help by preventing missing variables.
+             * 'this' refers to the current instance of the object
+             * static constructors cannot have access modifiers
+             * Class members w/o access modifiers are implied 'private'
              * 
-             * A constructor is automatically called when an instance of a class is created.
-             * Constructors do not have return types.
-             * Constructors can be overloaded by the number and type of params.
+             * Static class constructors are used to initialize static fields
+             * Static constructors are initialized before istance constructors
+             *  and even before you refer to any field in that class!
              */
 
-            Customer C1 = new Customer("Joe", "Blow");      // Customer instantiation
-            Customer C2 = new Customer();
-            C1.printFullName();
-            C2.printFullName();
+            Circle C1 = new Circle(5);
+            float area = C1.calculateArea();
+            Console.WriteLine("Area = {0}", area);
+
+            Circle C2 = new Circle(6);
+            float area2 = C2.calculateArea();
+            Console.WriteLine("Area = {0}", area2);
         }
     }
 
+class Circle
+{
+    //static float _PI = 3.141F;  // Single shared copy of _PI for all instances
+    // float _PI = 3.141F;        // Copy of _PI for each instance of Circle
+    static float _PI;
+    int _radius;
+
+    static Circle()
+    {
+        Console.WriteLine("Static constructor called");
+        Circle._PI = 3.141F;
+    }
+
+    public Circle(int radius)
+    {
+        Console.WriteLine("Instance constructor called");
+        this._radius = radius;
+    }
+
+    public float calculateArea()
+    {
+        return Circle._PI * this._radius * this._radius;
+    }
+}
