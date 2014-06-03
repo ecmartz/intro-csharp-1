@@ -5,48 +5,23 @@
         static void Main()
         {
             /*
-             * PART 12: Switch statements continued
-             * 
+             * PART 13: while loop in C#
+             * http://youtu.be/5xlc9qzOQmk
              */
 
-            int totalcoffeecost = 0;
+            Console.WriteLine("Please enter your target");
 
-            Start:
-            Console.WriteLine("1. Small\t2. Medium\t3. Large");
-            int userchoice = int.Parse(Console.ReadLine());
+            int userTarget = int.Parse(Console.ReadLine());
 
-            switch(userchoice)
+            int Start = 0;
+
+            while (Start <= userTarget)
             {
-                case 1:
-                    totalcoffeecost += 1;
-                    break;
-                case 2:
-                    totalcoffeecost += 2;
-                    break;
-                case 3:
-                    totalcoffeecost += 3;
-                    break;
-                default:
-                    Console.WriteLine("Your choice {0} is invalid.", userchoice);
-                    goto Start;
+                // Newlines
+                Console.WriteLine(Start);
+                // Concat spaces
+                Console.Write(Start + " ");
+                Start = Start + 2;
             }
-
-            Decide:
-            Console.WriteLine("Do you want to buy another coffee? Y or N");
-            string userpick = Console.ReadLine();
-
-            switch(userpick.ToUpper())
-            {
-                case "Y":
-                    goto Start;
-                case "N":
-                    break;
-                default:
-                    Console.WriteLine("Your choice {0} is invalid. Try again", userpick);
-                    goto Decide;
-            }
-
-            Console.WriteLine("Thank you for shopping with us");
-            Console.WriteLine("Bill amount = {0}", totalcoffeecost);
         }
     }
