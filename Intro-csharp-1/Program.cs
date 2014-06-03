@@ -1,69 +1,49 @@
 ﻿using System;
-//using ProjectA.TeamA;         // 'using' directive
-//using ProjectA.TeamB;         
-//using PATA = ProjectA.TeamA;    // Namespace alias for Team A
-//using PATB = ProjectA.TeamB;    // Namespace alias for Team B
-using PATA = ProjectA_TeamA;
-using PATB = ProjectA_TeamB;
+
+class Customer
+{
+    string _firstname;
+    string _lastname;
+
+    public Customer() : this("No _firstname", "No _lastname") // this() refers to the 2 param class constructor
+    { }
+
+    public Customer(string firstName, string lastName)      // Class constructor
+    {
+        this._firstname = firstName;
+        this._lastname = lastName;
+    }
+
+    public void printFullName()
+    {
+        Console.WriteLine("Full name = {0}", _firstname + " " + _lastname);
+    }
+    
+    ~Customer()         // Class destructor, garbage collection
+    {
+        // Clean up code goes here
+    }
+}
 
     class Program
     {
         public static void Main()
         {
             /*
-             * PART 18: Namespaces
-             * http://youtu.be/IQTbvVemMAg
+             * PART 19: Intro to classes
+             * http://youtu.be/Us2i7D-urgs
              * 
-             * Namespaces help organize program and avoid clashes.
-             * Namespaces don't correspond to file, directory or assembly names, they
-             * could be written in separate files and/or separate assemblies and still
-             * belong to the same namespace.
-             * Namespaces can be nested with dot operators and curly brackets
+             * Class constructors can help by preventing missing variables.
              * 
-             * Avoid ambiguity by using fully qualified names!
+             * A constructor is automatically called when an instance of a class is created.
+             * Constructors do not have return types.
+             * Constructors can be overloaded by the number and type of params.
              */
 
-            Console.WriteLine("Hello");
-
-            PATA.ClassA.print();
-            PATB.ClassA.print();
-            //ClassA.print(); // if you were using 'using'
-            //ProjectA.TeamB.ClassA.print();          // Using all namespaces
-            //ProjectA.TeamA.ClassA.print();
-
-            //PATA.ClassA.print();                    // Using namespace aliases
-            //PATB.ClassA.print();
-
-
-
-            
+            Customer C1 = new Customer("Joe", "Blow");      // Customer instantiation
+            Customer C2 = new Customer();
+            C1.printFullName();
+            C2.printFullName();
         }
     }
 
-//namespace ProjectA
-//{
-//    namespace TeamA
-//    {
-//        class ClassA
-//        {
-//            public static void print()
-//            {
-//                Console.WriteLine("Team A print method");
-//            }
-//        }
-//    }
-//}
-
-//namespace ProjectA
-//{
-//    namespace TeamB
-//    {
-//        class ClassA
-//        {
-//            public static void print()
-//            {
-//                Console.WriteLine("Team B print method");
-//            }
-//        }
-//    }
-//}
